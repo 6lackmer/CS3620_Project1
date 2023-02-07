@@ -4,6 +4,7 @@ import numpy as np
 
 # Start of the program
 def main():
+    # Delete everything in the file
     # Creating a digraph for each of the decisions
     decisions_digraph = create_decisions_digraph()
 
