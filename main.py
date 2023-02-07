@@ -58,6 +58,7 @@ def main():
                 print("You must enter 1 or 2:")
 
 # Creates a hashmap where the key is the node and the value is an array of the two outcomes.
+# Follows the last node in each path
 def create_ending():
     return {
         7: ["*The slime is quicker than anticipated*\n"
@@ -84,6 +85,7 @@ def create_ending():
             "It's him *one of the gaurds yells at you...*\n"]
     }
 
+# Comes before each decision/node
 def create_narrative():
     # Max of 2 possible narratives. Left as None if you only want one narrative
     return np.array([
