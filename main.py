@@ -1,9 +1,13 @@
 import networkx as nx
 import numpy as np
 
+file = open('adventure_log.txt', 'w')
 
 # Start of the program
 def main():
+    file.write('Here is your previous journey adventurer...\n')
+    file.write('-------------------------------------------\n')
+
     # Creating a digraph for each of the decisions
     decisions_digraph = create_decisions_digraph()
 
@@ -21,7 +25,8 @@ def main():
     print("1. Type either \"1\" or \"2\" to select your decision")
     print("2. Hit enter to move past the dialog")
     print("-----------------------------------------------------")
-    print_dialog("Enjoy the game!")
+    print("Enjoy the game!")
+    input("Press enter to continue...")
     print("-----------------------------------------------------")
 
     is_last_node = False
@@ -50,12 +55,15 @@ def main():
                  print()
                  endings = create_ending()
                  print(endings[current_node][choice-1])
+                 file.write("\n" + endings[current_node][choice-1] + "\n")
                  print("-----------------------------------------------------")
                  print("Please purchase the full game to continue playing...")
              else:  # User enters wrong number.
                  print("You must enter 1 or 2:")
             except: # int cast makes it so it has to be in a try catch for different data types
                 print("You must enter 1 or 2:")
+
+    file.close() # close the file
 
 # Creates a hashmap where the key is the node and the value is an array of the two outcomes.
 # Follows the last node in each path
@@ -93,10 +101,10 @@ def create_narrative():
          "interested in joining the Adventure Guild.\n"
          "Our organization is always seeking new members to join \n"
          "us in our quest for discovery and excitement.",
-         "To get started, we just need to know what class you are!"]
+         "To get started, we just need to know what class you are!"],
         ["Oh a warrior I see! Would you like to sign up for a quest at this time?", None],
         ["A Sorcerer?!?!?! We don't see many of your specialty \n"
-         "around here these days.\n\n"
+         "around here these days.\n"
          "*You waive off the excitement and hurry to complete the paperwork* ",
          "*An Adventurer approaches you from across the room as you turn away from the desk*\n"
          "I heard you're a Sorcerer, we could really use one in our party..."],
@@ -174,6 +182,8 @@ def create_decisions_digraph():
     return digraph
 
 def print_dialog(dialog):
+    file.write("\n" + dialog + "\n")
+
     print()
     print(dialog)
     input("Press enter to continue... ")
