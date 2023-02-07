@@ -24,7 +24,7 @@ def main():
     print_dialog("Enjoy the game!")
     print("-----------------------------------------------------")
 
-    is_last_node = False # initiate the variable
+    is_last_node = False
 
     while (is_last_node == False):
         if (len(list(decisions_digraph.successors(current_node))) == 0):
@@ -85,13 +85,13 @@ def create_ending():
     }
 
 def create_narrative():
-    # Max of 2 possible narratives. Left as "" if t
+    # Max of 2 possible narratives. Left as None if you only want one narrative
     return np.array([
         ["Welcome, brave adventurer! We're thrilled to have you \n"
          "interested in joining the Adventure Guild.\n"
          "Our organization is always seeking new members to join \n"
          "us in our quest for discovery and excitement.",
-         "To get started, we just need to know what class you are!"], # think this is blank because the first node won't have narrative preceding it
+         "To get started, we just need to know what class you are!"]
         ["Oh a warrior I see! Would you like to sign up for a quest at this time?", None],
         ["A Sorcerer?!?!?! We don't see many of your specialty \n"
          "around here these days.\n\n"
@@ -104,11 +104,11 @@ def create_narrative():
         ["Great! We are meeting tomorrow morning in front of the guild... We will see you then!\n"
          "*Night passes*",
          "*The following morning you meet out front of the guild...*\n"
-         "*As you introduce yourself to the party, someone asks what your affinity is*"], #join adventurers party
+         "*As you introduce yourself to the party, someone asks what your affinity is*"],
         ["That's a bummer! If you ever change your mind dont hesitate to reach out.\n"
          "*You leave the guild*",
          "*Outside, you suddenly get shoved to the side as a hooded figure runs past*\n"
-         "*Looking back, you see a party of city gaurds running in your direction*"], #Do not join
+         "*Looking back, you see a party of city gaurds running in your direction*"], 
         ["*You venture out to the countryside...*\n"
          "*Seeing a slime you slowly start to approach...*",
          "*Raising your sword ready to attack, it suddenly bounces towards you...*"],
